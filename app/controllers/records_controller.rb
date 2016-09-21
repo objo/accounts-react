@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
   def index
     @records = Record.all
   end
-  
+
   def create
     @record = Record.new(record_params)
 
@@ -14,6 +14,12 @@ class RecordsController < ApplicationController
     end
   end
 
+  def destroy
+    @record = Record.find(params[:id])
+    @record.destroy
+    head :no_content
+  end
+  
   private
 
   def record_params
